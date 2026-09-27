@@ -10,4 +10,6 @@ public class TemperatureConverter {
     public boolean isExtremeTemperature(double clsius){
         return clsius<-40 || clsius>50;
     }
+
+    public double kelvinToCelsius(double clsius) { return (clsius+273.15); }
 }

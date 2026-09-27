@@ -32,6 +32,19 @@ pipeline {
                 jacoco()
             }
         }
+
+        stage('Debug workspace') {
+            steps {
+                sh '''
+                    pwd
+                    echo "Files:"
+                    ls -la
+                    echo "Dockerfiles:"
+                    find . -name 'Dockerfile' -o -name 'dockerfile'
+                '''
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t vilmarvalval/my-java-app:latest .'

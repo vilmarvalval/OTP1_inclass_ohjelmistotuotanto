@@ -32,10 +32,30 @@ pipeline {
                 jacoco()
             }
         }
-        stage('Docker test') {
+        stage('Build Docker Image') {
             steps {
-                sh 'docker --version'
-                sh 'docker run hello-world'
+                sh 'docker build -t vilmarvalval/my-java-app:latest .'
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub',
+                        usernameVariable: 'DOCKER_USERNAME',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )
+                ]) {
+                    sh '''
+                        echo "$DOCKER_PASSWORD" | docker login \
+                            -u "$DOCKER_USERNAME" \
+                            --password-stdin
+
+                        docker push YOUR_USERNAME/my-java-app:latest
+
+                        docker logout
+                    '''
+                }
             }
         }
     }

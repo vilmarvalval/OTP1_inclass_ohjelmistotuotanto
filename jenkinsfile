@@ -8,17 +8,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'sh mvn clean install' // sh for linux and ios
+                sh 'mvn clean install' // sh for linux and ios
             }
         }
         stage('Test') {
             steps {
-                bat 'sh mvn test'
+                sh 'mvn test'
             }
         }
         stage('Code Coverage') {
             steps {
-                bat 'sh mvn jacoco:report'
+                sh 'mvn jacoco:report'
             }
         }
         stage('Publish Test Results') {

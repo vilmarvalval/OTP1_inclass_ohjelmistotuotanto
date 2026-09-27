@@ -51,7 +51,7 @@ pipeline {
                             -u "$DOCKER_USERNAME" \
                             --password-stdin
 
-                        docker push YOUR_USERNAME/my-java-app:latest
+                        docker push vilmarvalval/my-java-app:latest
 
                         docker logout
                     '''

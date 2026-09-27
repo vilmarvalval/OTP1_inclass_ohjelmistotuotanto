@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/vilmarvalval/OTP1_inclass_ohjelmistotuotanto'
+                git branch: 'main',
+                 url='https://github.com/vilmarvalval/OTP1_inclass_ohjelmistotuotanto'
             }
         }
         stage('Build') {

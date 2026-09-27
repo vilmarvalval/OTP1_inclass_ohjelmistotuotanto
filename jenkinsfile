@@ -32,5 +32,11 @@ pipeline {
                 jacoco()
             }
         }
+        stage('Docker test') {
+            steps {
+                sh 'docker --version'
+                sh 'docker run hello-world'
+            }
+        }
     }
 }

@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t vilmarvalval/OTP1_inclass_ohjelmistotuotanto:latest .'
+                sh 'docker build -t vilmarvalval/otp1_inclass_ohjelmistotuotanto:latest .'
             }
         }
         stage('Push Docker Image') {
@@ -51,7 +51,7 @@ pipeline {
                             -u "$DOCKER_USERNAME" \
                             --password-stdin
 
-                        docker push vilmarvalval/OTP1_inclass_ohjelmistotuotanto:latest
+                        docker push vilmarvalval/otp1_inclass_ohjelmistotuotanto:latest
 
                         docker logout
                     '''
